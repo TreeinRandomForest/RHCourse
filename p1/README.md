@@ -4,6 +4,11 @@ Important note 1: There'll be no focus on organizing code. The goal of these exe
 
 Important note 2: This is numerical code i.e. the central goal of our code is to compute a bunch of numbers. It is hard to debug this kind of code unless you have an expectation of what output you'll get (for example, in scientific computing i.e. physics, chemistry, biology etc. and even in these fields, debugging is tricky). Using tensor shapes and playing around with small examples in ipython/jupyter is crucial. Please do not write code and hope it'll work - be paranoid about checking.
 
+Suggested reading order:
+* rnn.py
+* test_rnn.py
+* train.py
+
 Reference: [RNN paper](https://apps.dtic.mil/dtic/tr/fulltext/u2/a164453.pdf)
 
 Consider the following problem: Given an array of numbers, compute the sum. A basic loop would look like:

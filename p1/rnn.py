@@ -41,6 +41,9 @@ class MyRNN(nn.Module): #your model will inherit from nn.Module
         # so autodiff/backprop keeps track of their derivatives
         # this can be done by wrapping them in an nn.Parameter call
         # or putting them in a parameter list
+        # Exercise: comment the following line, init the model
+        # and look at list(model.parameters())
+        # Now do the same after uncommenting the following line
         self.params = nn.ParameterList([self.W_hx,
                                         self.W_hh,
                                         self.b_h,
