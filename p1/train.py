@@ -39,14 +39,15 @@ def train_loop(model,
                optimizer,
                criterion,
                train_data,
-               test_data,
-               n_epochs=10,
-               print_freq=1):
+               n_epochs=10
+               ):
 
     model.train() #good practice: will go deeper during dropout and batch normalization
 
     # training loop begins
     for n in range(n_epochs): #one epoch is one full pass over the train set
+        # initialize running sum of training losses
+        train_loss = 0 
         for seq in train_data: #loop over every sequence/example
             # step 1: make a prediction
             # seq is a numpy array - convert to torch tensor
@@ -89,12 +90,48 @@ def train_loop(model,
             # we need to set the buffers to 0 before accumulating gradients
             optimizer.zero_grad() #set buffer values to 0s
 
+            loss.requires_grad = True
             loss.backward() #compute gradients
             
             # step 4: use variant of gradient descent to update weights
             optimizer.step() #super-simple
             
-            # step 5: evaluate the model on the test set to track performance
+            # update running training loss 
+            train_loss += loss.item()
+
+        # step 5: average training loss over all sequences for each epoch
+        train_loss /= len(train_data)
+        print(f"Epoch {n + 1}/{n_epochs} Loss: {train_loss}")
+
+    return model, optimizer
+
+# step 6: evaluate the model on the test set to track performance
+def test_loop(model, 
+              criterion,
+              test_data):
+    
+    # step 7: set model to evaluation mode
+    model.eval()
+   
+    # initialize running sum of testing losses and accuracies
+    test_loss, test_accu = 0, 0
+
+    # step 8: compute gradients without updating weights
+    with torch.no_grad():
+        for seq in test_data:
+            seq = torch.from_numpy(seq).unsqueeze(0).unsqueeze(2)
+            seq = seq.float()
+            preds = model(seq)
+            labels = torch.cumsum(seq, 1)
+            
+            # update running test loss and accuracy
+            test_loss += criterion(preds, labels)
+            test_accu += (labels == preds).sum().item()
+    
+    # step 9: calculate test loss and accuracy over all sequences for each epoch
+    test_loss /= len(test_data)
+    test_accu /= len(test_data)
+    print(f"Test loss: {test_loss} \nTest accuracy: {test_accu}")
 
     # notes:
     # the loop over sequences is inefficient
@@ -109,5 +146,4 @@ def train_loop(model,
 
     # should be equivalent to
     # model, optimizer = train(model, optimizer, ..., n_epochs=25) #CHECK
-    
-    return model, optimizer
+  
