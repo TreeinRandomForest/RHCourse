@@ -29,12 +29,13 @@ class MyRNN(nn.Module): #your model will inherit from nn.Module
         # in ipython (or jupyter) - type: torch.nn.init.*?
         # see: https://cs230.stanford.edu/section/4/
         # will see better initialization in next section: https://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf
-        self.W_hx = torch.randn(size=(hidden_dim, input_dim)) #read as mapping x space -> h space
-        self.W_hh = torch.randn(size=(hidden_dim, hidden_dim)) #read as mapping h space -> h space
-        self.b_h = torch.zeros(size=(hidden_dim,)) #bias in h space
+        self.W_hx = nn.Parameter(torch.randn(size=(hidden_dim, input_dim))) #read as mapping x space -> h space
+        self.W_hh = nn.Parameter(torch.randn(size=(hidden_dim, hidden_dim))) #read as mapping h space -> h space
+        self.b_h = nn.Parameter(torch.zeros(size=(hidden_dim,))) #bias in h space
 
-        self.W_yh = torch.randn(size=(out_dim, hidden_dim)) #mapping h space -> y space
-        self.b_y = torch.zeros(size=(out_dim,)) #bias in y space
+        self.W_yh = nn.Parameter(torch.randn(size=(out_dim, hidden_dim))) #mapping h space -> y space
+        self.b_y = nn.Parameter(torch.zeros(size=(out_dim,))) #bias in y space
+        #self.b_y = torch.zeros(size=(out_dim,)) #bias in y space
 
         # note: as we'll see later, pytorch needs to treat
         # weights specially i.e. they need to be registered

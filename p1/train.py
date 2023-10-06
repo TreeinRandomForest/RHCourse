@@ -95,7 +95,10 @@ def train_loop(model,
             optimizer.step() #super-simple
             
             # step 5: evaluate the model on the test set to track performance
-
+            if n % print_freq == 0:
+                #run on test set
+                #test_acc = test_loop(model, test_data)
+                pass
     # notes:
     # the loop over sequences is inefficient
     # ideally we would pack the data into matrices/tensors and pass to the model
@@ -111,3 +114,7 @@ def train_loop(model,
     # model, optimizer = train(model, optimizer, ..., n_epochs=25) #CHECK
     
     return model, optimizer
+
+#@torch.no_grad()
+#def test_loop(model, test_data):
+    
