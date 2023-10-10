@@ -33,13 +33,13 @@ NN setup:
 * optimization with stochastic gradient descent (SGD) i.e. $\theta \leftarrow \theta - \epsilon g$
 * batch-size: 10
 * learning rate $\epsilon$ optimized based on validation set error after 5 million updates i.e. do a sweep of $\epsilon$ and pick one minimizing validation set error after 5 million updates (one $\epsilon$ per dataset and per #hidden layers?).
-* non-linear activation: sigmoid ($\frac{1}{1 + \exp^{-x}}$), tanh ($\frac{\exp^{x} - \exp{-x}}{\exp^{x} + \exp^{-x}}$) and softsign ($\frac{x}{1 + \lvert x \rvert}$). We will also use relu and leakyrelu.
+* non-linear activation: sigmoid ($\frac{1}{1 + e^{-x}}$), tanh ($\frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}$) and softsign ($\frac{x}{1 + \lvert x \rvert}$). We will also use relu and leakyrelu.
 
 For each model (#hidden layers, non-linear activation, dataset), the best hyperparameters are found using the validation set error.
 
 * Initialization scheme:
   * Biases: 0
-  * Weights: At layer l, $W_{ij}$ \sim \mathcal{U}[-\frac{1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]$ i.e. uniform draws in the specified interval where $n$ is the number of incoming nodes from previous layer i.e. the number of columns of W. Note this means that the variance of each $W_{ij} \sim \frac{1}{n}$ (exercise: compute the mean and variance of $\mathcal{U}(-a, a)$.
+  * Weights: At layer l, $W_{ij} \sim \mathcal{U}[-\frac{1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]$ i.e. uniform draws in the specified interval where $n$ is the number of incoming nodes from previous layer i.e. the number of columns of W. Note this means that the variance of each $W_{ij} \sim \frac{1}{n}$ (exercise: compute the mean and variance of $\mathcal{U}(-a, a)$.
 
 ### Section 3: Effect of Activation Functions and Saturation During Training
 
