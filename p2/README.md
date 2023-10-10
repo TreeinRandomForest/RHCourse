@@ -39,7 +39,7 @@ For each model (#hidden layers, non-linear activation, dataset), the best hyperp
 
 * Initialization scheme:
   * Biases: 0
-  * Weights: At layer l, $W_{ij}$ \sim \mathcal{U}[-\frac{1}{\sqrt{n}}, \frac{1}{\sqrt{n}}] i.e. uniform draws in the specified interval where $n$ is the number of incoming nodes from previous layer i.e. the number of columns of W. Note this means that the variance of each $W_{ij} \sim \frac{1}{n}$ (exercise: compute the mean and variance of $\mathcal(-a, a)$.
+  * Weights: At layer l, $W_{ij}$ \sim \mathcal{U}[-\frac{1}{\sqrt{n}}, \frac{1}{\sqrt{n}}]$ i.e. uniform draws in the specified interval where $n$ is the number of incoming nodes from previous layer i.e. the number of columns of W. Note this means that the variance of each $W_{ij} \sim \frac{1}{n}$ (exercise: compute the mean and variance of $\mathcal{U}(-a, a)$.
 
 ### Section 3: Effect of Activation Functions and Saturation During Training
 
