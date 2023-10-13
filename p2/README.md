@@ -43,6 +43,36 @@ For each model (#hidden layers, non-linear activation, dataset), the best hyperp
 
 ### Section 3: Effect of Activation Functions and Saturation During Training
 
+What we want to avoid:
+* Saturation of units e.g. for sigmoid units, we don't want activations that have large absolute values since $\sigma(x)$ is very flat for large positive or negative $x$ and the derivative $\sigma'(x) \approx 0$. As gradients get propagated backwards, lots of saturated units will suppress this propagation (see exercise 1 below).
+* We don't want activations only in the linear regime. E.g., a sigmoid is linear near $x = 0$. Linear units compose to form an effective linear unit thus collapsing the layers. Exercise: given two linear functions $f(x) = ax + b$ and $g(x) = cx + d$, what is $(g \circ f)(x) = g(f(x))$?
+
+#### Section 3.1 Experiments with the Sigmoid
+
+(Exercise) Prove the following properties of the sigmoid:
+* $\lim_{x\rightarrow -\infty} \sigma(x) \rightarrow 0$
+* $\lim_{x\rightarrow \infty} \sigma(x) \rightarrow 1$
+* $\sigma(0) = \frac{1}{2}$
+* Near $x=0$, $\sigma(x)$ is linear with slope $\frac{1}{4}$ (Taylor expansion). How large is the quadratic term? What about the cubic term?
+
+Figure 2:
+* Fix 300 test examples
+* After every 20k updates to the model, collect the activations (after applying the non-linearity) for the 300 examples at each layer. Plot the mean and standard deviation (across 300 examples, across nodes in given hidden layer) at each layer as a function of the 20k epochs.
+* Layer 1 refers to activations (after applying the non-linearity) at the first hidden layer after input layer.
+* At the end of training (x-axis near 140):
+  * Layers 1-3 have activations centered (approximately) around 0.5.
+  * Layer 4 shows saturations of units with activations close to 0 (negative inputs).
+* Training dynamics
+  * Layers 1 and 2 generally have activations around 0.5 for most of training (but something special happens near $x = 100$)
+  * Layer 3 starts biased/saturated towards 1 but rapidly moves towards being centered around 0.5 after $x = 100$. This might be because of the statistics of the input data (the pixels are not centered etc.)
+  * Layer 4 rapidly moves towards saturation and recovers mildly near the end.
+  * The variance of activations goes down as one goes deeper into the network. Recall that very low variance near 0.5 is the linear regime for the sigmoid.
+
+Summary:
+* First few layers start unsaturated and get closer to saturation with time i.e. they stay centered but the standard deviation increases.
+* Last layers start saturated and can recover (sometimes barely)
+
+Figure 3:
 
 
 ## Experiments to try out:
@@ -53,3 +83,5 @@ For each model (#hidden layers, non-linear activation, dataset), the best hyperp
 
 2. Implement a feedforward neural network with dense layers and a non-linear activation to learn the identity function: $$id: \mathbb{R}^n \rightarrow \mathbb{R}^n$$ with $id(x) = x$. The free parameters here are n (dimensionality of the input and output space), the number of nodes in the hidden layers (we'll keep this constant across layers), the number of layers and the non-linear activation function. The loss will be mean-squared error loss. Given a fixed number of epochs E, record the train and test errors as a function of n, number of hidden nodes, number of hidden layers, two choices of activation functions (sigmoid and relu).
 
+## Further Readings
+* LeCun, Y., Bottou, L., Orr, G. B., & M ̈uller, K.-R. (1998b). Efficient backprop. In Neural networks, tricks of the trade, Lecture Notes in Computer Science LNCS 1524. Springer Verlag
