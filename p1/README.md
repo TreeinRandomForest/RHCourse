@@ -54,7 +54,7 @@ where $\sigma$ is a general non-linearity (relu, sigmoid, pick your choice), W a
 
 This loop is a recurrent neural network (RNN). Pictorially, this loop can be represented as shown below:
 
-!(media/RNN Anatomy.png)
+![RNN Anatomy](/media/RNN Anatomy.png)
 
 **General note**:
 * If you are used to thinking of neural networks as multi-layer perceptrons, this might look funny. You should instead think of neural networks as computations that take vectors (or tensors) as inputs and apply a sequence of differentiable operations.
