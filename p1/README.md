@@ -97,10 +97,9 @@ $\frac{\partial L}{\partial W_{yh}}$:
 
 $$\begin{align}
 \frac{\partial L}{\partial W_{yh}} &= \frac{\partial}{\partial W_{yh}} \frac{1}{2}(\hat{y} - y)^2 \\
-&= (\hat{y} - y) \frac{\partial}{\partial W_{yh}} \hat{y} \\
 &= (\hat{y} - y) \frac{\partial \hat{y}}{\partial W_{yh}} \\
 &= (\hat{y} - y) \frac{\partial g(W_{yh} h_5 + b_y)}{\partial W_{yh}} \\
-&= (\hat{y} - y) g'() \frac{\partial W_{yh} h_5 + b_y}{\partial W_{yh}} \\
+&= (\hat{y} - y) g'() \frac{\partial \left W_{yh} h_5 + b_y \right}{\partial W_{yh}} \\
 &= (\hat{y} - y) g'() h_5 \\
 \end{align}$$
 
