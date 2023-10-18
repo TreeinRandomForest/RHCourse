@@ -111,12 +111,13 @@ $\frac{\partial L}{\partial W_{hh}}$:
 
 $$\begin{align}
 \frac{\partial L}{\partial W_{hh}} &= \frac{\partial}{\partial W_{hh}} \frac{1}{2}(\hat{y} - y)^2 \\
+
+
+\end{align}$$
+
 &= (\hat{y} - y) \frac{\partial \hat{y}}{\partial W_{hh}} \\
 &= (\hat{y} - y) \frac{\partial g(W_{yh} h_5 + b_y)}{\partial W_{hh}} \\
 &= (\hat{y} - y) g'() \frac{\partial \left( W_{yh} h_5 + b_y \right)}{\partial W_{hh}} \\
 &= (\hat{y} - y) g'() \left[ W_{yh} \frac{\partial h_5}{\partial W_{hh}}\right] \\
-
-\end{align}$$
-
 &= (\hat{y} - y) g'() W_{yh} h'_{5}() \frac{\partial \left( W_{hh} h_4 + W_{hx} x_5 + b_h \right)}{\partial W_{hh}} \\
 &= (\hat{y} - y) g'() W_{yh} h'_{5}() \left[ h_4 + W_{hh} \frac{\partial h_4}{\partial W_{hh}}\right] \\
