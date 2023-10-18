@@ -96,7 +96,12 @@ For now, we will assume that all the weights and biases are 1-dimensional i.e. $
 $\frac{\partial L}{\partial W_{yh}}$:
 
 $$\begin{align}
-\frac{\partial L}{\partial W_{yh}} &= a \\
-&= b \\
+\frac{\partial L}{\partial W_{yh}} &= \frac{\partial}{\partial W_{yh}} \frac{1}{2}(\hat{y} - y)^2 \\
+&= (\hat{y} - y) \frac{\partial}{\partial W_{yh}} \hat{y} \\
+&= (\hat{y} - y) \frac{\partial \hat{y}}{\partial W_{yh}} \\
+&= (\hat{y} - y) \frac{\partial g(W_{yh} h_5 + b_y)}{\partial W_{yh}} \\
+&= (\hat{y} - y) g'() \frac{\partial W_{yh} h_5 + b_y}{\partial W_{yh}} \\
+&= (\hat{y} - y) g'() h_5 \\
 \end{align}$$
 
+Note: we will use the notation $g'()$ to denote the derivative of g with respect to its argument. For example, if $g$ is a sigmoid, $g'() = g() (1-g())$. For derivatives with respect to the weights or biases, we'll explicitly write the full partial derivative.
