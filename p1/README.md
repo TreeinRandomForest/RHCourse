@@ -87,8 +87,16 @@ $$h_5 = f(W_{hh} h_4 + W_{hx} x_5 + b_h)$$
 
 $$\hat{y} = g(W_{yh} h_5 + b_y)$$
 
-For gradient descent, we care about the following derivatives:
+The loss function, $L$ is used to compare the prediction $\hat{y}$ with the label $y$. The loss function used here is mean-squared error i.e. $L(\hat{y}, y) = \frac{1}{2}(\hat{y} - y)^2$. For gradient descent, we care about the following derivatives:
 
 $\frac{\partial L}{\partial W_{yh}}, \frac{\partial L}{\partial W_{hh}}, \frac{\partial L}{\partial W_{hx}}, \frac{\partial L}{\partial b_{y}}, \frac{\partial L}{\partial b_{h}}$
 
 For now, we will assume that all the weights and biases are 1-dimensional i.e. $W_{yh}, W_{hh}, W_{hx}, b_y, b_h \in \mathbb{R}$.
+
+$\frac{\partial L}{\partial W_{yh}}$:
+
+$\begin{split}
+\frac{\partial L}{\partial W_{yh}} = a \\
+b
+\end{split}$
+
