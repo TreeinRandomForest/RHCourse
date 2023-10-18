@@ -66,3 +66,25 @@ This loop is a recurrent neural network (RNN). Pictorially, this loop can be rep
 2. Train on length L and evaluate on tests sets of various lengths (both < L as well as > L). What happens to test performance as a function of L?
 3. On the training set where gradients are computed, plot the distribution of gradients across epochs and for each iteration (is this possible in PyTorch?)
 4. Pick a realistic sequence prediction task and train an RNN. Papers are a good place to look for examples. Please, no stock prediction based on a single time-series - no one on Wall Street does this - see this [book](https://press.princeton.edu/books/paperback/9780691134796/asset-price-dynamics-volatility-and-prediction) for a better introduction to understanding asset prices.
+
+**Backpropagation in Vanilla RNNs**
+
+This is a simple example to demonstrate the calculation of gradients in a vanilla (the type described and implemented above) RNN. For the sake of clarity, all the details will be written out. We'll work with the case when $T=5$ i.e. we have 5 time-steps with inputs $x_1, x_2, x_3, x_4, x_5$ and there's a single output $\hat{y}$ for the whole sequence. This is shown in the picture below:
+
+![RNN Anatomy](https://github.com/TreeinRandomForest/RHCourse/blob/main/p1/media/RNNWithOutput.png)
+
+The sequence of computations is:
+
+$$h_1 = f(W_{hh} h_0 + W_{hx} x_1 + b_h)$$
+$$h_2 = f(W_{hh} h_1 + W_{hx} x_2 + b_h)$$
+$$h_3 = f(W_{hh} h_2 + W_{hx} x_3 + b_h)$$
+$$h_4 = f(W_{hh} h_3 + W_{hx} x_4 + b_h)$$
+$$h_5 = f(W_{hh} h_4 + W_{hx} x_5 + b_h)$$
+
+$$\hat{y} = g(W_{yh} h_5 + b_y)$$
+
+For gradient descent, we care about the following derivatives:
+
+$\frac{\partial L}{\partial W_{yh}}, \frac{\partial L}{\partial W_{hh}}, \frac{\partial L}{\partial W_{hx}}, \frac{\partial L}{\partial b_{y}}, \frac{\partial L}{\partial b_{h}}$
+
+For now, we will assume that all the weights and biases are 1-dimensional i.e. $W_{yh}, W_{hh}, W_{hx}, b_y, b_h \in \mathbb{R}$.
