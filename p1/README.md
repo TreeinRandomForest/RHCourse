@@ -103,4 +103,16 @@ $$\begin{align}
 &= (\hat{y} - y) g'() h_5 \\
 \end{align}$$
 
-Note: we will use the notation $g'()$ to denote the derivative of g with respect to its argument. For example, if $g$ is a sigmoid, $g'() = g() (1-g())$. For derivatives with respect to the weights or biases, we'll explicitly write the full partial derivative.
+Note: we will use the notation $g'()$ to denote the derivative of g with respect to its argument. For example, if $g$ is a sigmoid, $g'(x) = g(x) (1-g(x))$. For derivatives with respect to the weights or biases, we'll explicitly write the full partial derivative. To be very clear, $g'()$ above refers to $g'(W_{yh) h_5 + b_y)$ but since the argument can be inferred, we will use the shorthand $g'()$.
+
+Note: To keep track of arguments for the hidden states, instead of just writing $h_5 = f()$, we'll write $h_5 = f_5()$. This doesn't mean that the activation for each time-step is different. It's just a book-keeping device to ensure we don't forget which hidden state we are referring to in the equations. This will become more clear in the example below:
+
+$\frac{\partial L}{\partial W_{hh}}$:
+
+$$\begin{align}
+\frac{\partial L}{\partial W_{hh}} &= \frac{\partial}{\partial W_{hh}} \frac{1}{2}(\hat{y} - y)^2 \\
+&= (\hat{y} - y) \frac{\partial \hat{y}}{\partial W_{hh}} \\
+&= (\hat{y} - y) \frac{\partial g(W_{yh} h_5 + b_y)}{\partial W_{hh}} \\
+&= (\hat{y} - y) g'() \frac{\partial \left( W_{yh} h_5 + b_y \right)}{\partial W_{hh}} \\
+&= (\hat{y} - y) g'() \left[ W_{yh} \frac{\partial h_5}{\partial W_{hh}}\right] \\
+\end{align}$$
