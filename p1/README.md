@@ -116,12 +116,6 @@ $$\begin{align}
 &= (\hat{y} - y) g'() \frac{\partial \left( W_{yh} h_5 + b_y \right)}{\partial W_{hh}} \\
 &= (\hat{y} - y) g'() \left[ W_{yh} \frac{\partial h_5}{\partial W_{hh}}\right] \\
 &= (\hat{y} - y) g^{\prime}() W_{yh} h^{\prime}\_{5}() \frac{\partial \left( W_{hh}h_4 + W_{hx}x_5 + b_h \right)}{\partial W_{hh}} \\
+&= (\hat{y} - y) g'() W_{yh} h^{\prime}\_{5}() \left[ h_4 + W_{hh} \frac{\partial h_4}{\partial W_{hh}}\right] \\
 \end{align}$$
-
-$\frac{\partial \left( W_{hh}h_4 + W_{hx}x_5 + b_h \right)}{\partial W_{hh}}$
-
-
-\frac{\partial \left( W_{hh} h_4 + W_{hx} x_5 + b_h \right)}{\partial W_{hh}} \\
-&= (\hat{y} - y) g'() W_{yh} h'_{5}() \left[ h_4 + W_{hh} \frac{\partial h_4}{\partial W_{hh}}\right] \\
-
 
