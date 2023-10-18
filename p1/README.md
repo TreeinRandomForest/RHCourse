@@ -111,8 +111,6 @@ $\frac{\partial L}{\partial W_{hh}}$:
 
 $$\begin{align}
 \frac{\partial L}{\partial W_{hh}} &= \frac{\partial}{\partial W_{hh}} \frac{1}{2}(\hat{y} - y)^2 \\
-
-
 \end{align}$$
 
 &= (\hat{y} - y) \frac{\partial \hat{y}}{\partial W_{hh}} \\
