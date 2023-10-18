@@ -95,8 +95,8 @@ For now, we will assume that all the weights and biases are 1-dimensional i.e. $
 
 $\frac{\partial L}{\partial W_{yh}}$:
 
-$\begin{split}
-\frac{\partial L}{\partial W_{yh}} = a \\
-b
-\end{split}$
+$$\begin{eqnarray}
+\frac{\partial L}{\partial W_{yh}} &=& a \\
+&=& b \\
+\end{eqnarray}$$
 
