@@ -118,7 +118,8 @@ $$\begin{align}
 &= (\hat{y} - y) g'() W_{yh} h^{\prime}_{5}() \\
 \end{align}$$
 
-$$\frac{\partial \left( X \right)}{\partial W_{hh}}\\$$
+$\frac{\partial \left( X \right)}{\partial W_{hh}}$
+
 
 \frac{\partial \left( W_{hh} h_4 + W_{hx} x_5 + b_h \right)}{\partial W_{hh}} \\
 &= (\hat{y} - y) g'() W_{yh} h'_{5}() \left[ h_4 + W_{hh} \frac{\partial h_4}{\partial W_{hh}}\right] \\
