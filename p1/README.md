@@ -76,9 +76,13 @@ This is a simple example to demonstrate the calculation of gradients in a vanill
 The sequence of computations is:
 
 $$h_1 = f(W_{hh} h_0 + W_{hx} x_1 + b_h)$$
+
 $$h_2 = f(W_{hh} h_1 + W_{hx} x_2 + b_h)$$
+
 $$h_3 = f(W_{hh} h_2 + W_{hx} x_3 + b_h)$$
+
 $$h_4 = f(W_{hh} h_3 + W_{hx} x_4 + b_h)$$
+
 $$h_5 = f(W_{hh} h_4 + W_{hx} x_5 + b_h)$$
 
 $$\hat{y} = g(W_{yh} h_5 + b_y)$$
